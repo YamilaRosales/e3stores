@@ -8,17 +8,17 @@ namespace FraccionesLib
 {
     public class Fracciones
     {
+        
         public string Simplificar (string fraccion)
         {
             string[] frac = fraccion.Split('/');
             int numerador=0, denominador = 0;
-            int cociente = 0;
+            
             if(frac.Length > 0 && frac.Length == 2)
             {
                 if ((numerador > denominador) && (numerador % denominador == 0))
                 {
-                   cociente = numerador / denominador;
-                   fraccion = cociente.ToString(); 
+                   fraccion = (numerador / denominador).ToString(); 
                 }
                 
                 int[] factoresPrimosN = getFactoresPrimos(Int32.Parse(frac[0]));
@@ -28,19 +28,19 @@ namespace FraccionesLib
             }
             return fraccion;
         }
-        void eliminarFactoresRepetidos(int[] factoresN, int[] factoresD) {
+        private void eliminarFactoresRepetidos(int[] factoresN, int[] factoresD) {
             factoresN = factoresN.Except(factoresN.Intersect(factoresD)).ToArray();
             factoresD = factoresD.Except(factoresD.Intersect(factoresN)).ToArray();
         }
 
-        string getFraccionSimplificada(int[] factoresN, int[] factoresD)
+        private string getFraccionSimplificada(int[] factoresN, int[] factoresD)
         {
             string fraccionSimplificada = String.Empty;
 
-
+            /*To Do*/
             return fraccionSimplificada;
         }
-        int[] getFactoresPrimos(int numero)
+        private int[] getFactoresPrimos(int numero)
         {
             int[] listPrimos = { };
             int j = 0;
@@ -69,7 +69,7 @@ namespace FraccionesLib
             }
             return listPrimos;
         }
-        bool esPrimo(int numero)
+        private bool esPrimo(int numero)
         {
             if (numero <= 1) return false;
             if (numero == 2) return true;
@@ -83,7 +83,7 @@ namespace FraccionesLib
 
             return true;
         }
-        int getProximoPrimo(int numero)
+        private int getProximoPrimo(int numero)
         {
             int i = (numero==2 ? numero+= 1: numero);
             for (; !esPrimo(i); i++) ;
